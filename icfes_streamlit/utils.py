@@ -10,7 +10,7 @@ def dic_depto():
     'CAQUETA':'Region Amazonica','PUTUMAYO':'Region Amazonica','ARAUCA':'Region Orinoquia',
     'GUAVIARE':'Region Orinoquia','AMAZONAS':'Region Amazonica','SAN ANDRES':'Region Caribe',
     'VICHADA':'Region Orinoquia','VAUPES':'Region Amazonica','GUAINIA':'Region Amazonica'}
-    return dic
+    return dic  
 
 
 def dic_educacion():

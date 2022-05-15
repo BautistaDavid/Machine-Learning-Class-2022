@@ -1,32 +1,29 @@
 import streamlit as st 
-
+import time
+import streamlit.components.v1 as components
+import seaborn as sns 
+import matplotlib.pyplot as plt 
 import pandas as pd 
-# datos = pd.read_json('https://www.datos.gov.co/api/views/ynam-yc42/rows.json?accessType=DOWNLOAD')
-datos = pd.read_csv('data\saber_11_2019.csv')
-print('hola')
 
-len(datos) / 3
+df = pd.read_csv('data/data_icfes.csv')
 
-datos.info()
-
-
-len(datos)/4
-
-data1 = datos.loc[:136553]
-data2 = datos.loc[136554:273106]
-data3 = datos.loc[273107:409659]
-data4 = datos.loc[409660:546212]
+with st.sidebar:
+    st.markdown('''
+    # Seleccione una de las áreas a evaluar dentro del examen que desea explorar ...
+    ''')
+    area = st.selectbox(
+     '',
+     ('Ciencias Naturales', 'Ingles','Lectura Critica','Matemáticas','Sociales Ciudadanas', ''))
 
 
+st.markdown(f'''
+# Análisis Exploratorio Resultados del Examen ICFES Saber 11 - 2019 -II
+#### A continuación, se presentan un reporte de estadísticos descriptivos según la categoría seleccionada en la SideBar de esta App.
 
-data1.to_csv('icfes_1.csv')
-data2.to_csv('icfes_2.csv')
-data3.to_csv('icfes_3.csv')
-data4.to_csv('icfes_4.csv')
+''')
+st.markdown(f'''
+## Área seleccionada: {area}''')
 
-pd.concat([data1,data2,data3,data4], axis = 0).reset_index()
-
-
-len(datos)
-136553 * 3
-data1
+if area == 'Ciencias Naturales':
+    fig_naturales = sns.boxplot(data=df,x='punt_c_naturales')
+    st.pyplot(fig_naturales)
