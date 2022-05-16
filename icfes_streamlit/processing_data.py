@@ -36,6 +36,7 @@ def data_processing_function():
                'Puntaje Lectura Critica', 'perct_lectura_critica','Puntaje Matematicas', 'percentil_matematicas','Puntaje Ciencias Naturales','percentil_c_naturales',
                'Puntaje Sociales Ciudadanas','percentil_sociales_ciudadanas','Puntaje Ingles','percentil_ingles','Puntaje Global','percentil_global','Region','Edad' ]
 
+    df = df[df['Puntaje Global']>5]
     return df
 
 

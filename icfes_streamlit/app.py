@@ -97,7 +97,7 @@ esta característica como variable de control.
 
 pivot3 = pd.pivot_table(data = df,index =['Region'], values = 'Puntaje Global' ,columns =['Genero'],aggfunc = 'count')
 
-fig3 = plt.figure(figsize=(7    ,5))
+fig3 = plt.figure(figsize=(7 ,5))
 plt.title('Participación Porcentual de \nGenero por Regiones', fontsize=10)
 plt.xticks(rotation=15, fontsize=8)
 plt.yticks(fontsize=8)
@@ -138,6 +138,94 @@ stat = pd.DataFrame({'Hombre':stat_hombre,
                     'Mujer': stat_mujer})
 stat.drop('count',inplace=True)
 st.write(stat.T)
+
+st.markdown('''
+_
+##### El Boxplot y la tabla anterior permite denotar las diferencias entre las distribuciones del puntaje entre Géneros, se puede notar que los hombres presentan \
+un promedio aproximadamente 8 puntos más altos que las mujeres, así miamo la distribución tiende a estar más a la derecha, de manera que tanto los cuartiles como el \
+punto mínimo y máximo están unos puntos por encima.
+
+### Distribuciones de Puntajes Areas Especificas por Región y Genero
+
+#### Lectura Critica
+''')
+
+fig5 = plt.figure(figsize=(12,5))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+boxfig5 = sns.boxplot(x='Puntaje Lectura Critica',y='Genero', data=df, palette='rainbow')
+boxfig5.set_xlabel('Puntaje Lectura Critica',fontsize=25)
+boxfig5.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig5)
+
+
+st.markdown('''
+#### Matematicas
+''')
+fig6 = plt.figure(figsize=(12,5))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+boxfig6 = sns.boxplot(x='Puntaje Matematicas',y='Genero', data=df, palette='rainbow')
+boxfig6.set_xlabel('Puntaje Matematicas',fontsize=25)
+boxfig6.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig6)
+
+st.markdown('''
+#### Ciencias Naturales
+''')
+fig7 = plt.figure(figsize=(12,5))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+boxfig7 = sns.boxplot(x='Puntaje Ciencias Naturales',y='Genero', data=df, palette='rainbow')
+boxfig7.set_xlabel('Puntaje Ciencias Naturales',fontsize=25)
+boxfig7.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig7)
+
+st.markdown('''
+#### Sociales Ciudadanas
+''')
+fig8 = plt.figure(figsize=(12,5))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+boxfig8 = sns.boxplot(x='Puntaje Sociales Ciudadanas',y='Genero', data=df, palette='rainbow')
+boxfig8.set_xlabel('Puntaje Sociales Ciudadanas',fontsize=25)
+boxfig8.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig8)
+
+st.markdown('''
+#### Ingles
+''')
+fig9 = plt.figure(figsize=(12,5))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+boxfig9 = sns.boxplot(x='Puntaje Ingles',y='Genero', data=df, palette='rainbow')
+boxfig9.set_xlabel('Puntaje Ingles',fontsize=25)
+boxfig9.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig9)
+
+
+
+
+
+
+
+
+
+
+
+fig5 = plt.figure(figsize=(12,5))
+plt.xticks(rotation = 15)
+boxfig5 = sns.boxplot(y='Puntaje Lectura Critica',x='Region',hue ='Genero' ,data=df)
+st.pyplot(fig5)
+
+
+
+
+
+scores = df[['Puntaje Lectura Critica','Puntaje Matematicas','Puntaje Ciencias Naturales','Puntaje Sociales Ciudadanas','Puntaje Ingles']]
+
+
+
 
 
 
