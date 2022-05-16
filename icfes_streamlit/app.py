@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 from matplotlib import rcParams
 from processing_data import data_processing_function
+import plotly.figure_factory as ff
 
 df = data_processing_function()
 df['Region'].replace({'EXTRANJERO':'Extranjero'},inplace=True)
@@ -111,13 +112,32 @@ a mujeres que los de hombres, sin embargo se mantiene un balance que puede ser i
 datos en algún modelo de predicción de puntajes. 
 ''')
 
+st.markdown('''
+### Distribuciones del Puntaje Global
 
+##### Habiendo realizado un acercamiento rápido a los subgrupos que conforman los datos se puede ahora analizar las distribuciones del puntaje global sujetos\
+a diferentes características.
 
+#### Puntaje Global por Genero
+'''
+)
 
+fig4 = plt.figure(figsize=(13,7))
+plt.yticks(fontsize=22)
+plt.xticks(rotation = 0, fontsize=22)
+plt.title("BoxPlots del Puntaje Global por Genero", fontsize = 28)
+box1 = sns.boxplot(y='Genero',x="Puntaje Global", data=df,palette='rainbow')
+box1.set_xlabel('Puntaje Global',fontsize=25)
+box1.set_ylabel('Genero',fontsize=25)
+st.pyplot(fig4)
 
+stat_hombre = df[df['Genero'] == 'Hombre']['Puntaje Global'].describe()
+stat_mujer = df[df['Genero'] == 'Mujer']['Puntaje Global'].describe()
 
-
-
+stat = pd.DataFrame({'Hombre':stat_hombre,
+                    'Mujer': stat_mujer})
+stat.drop('count',inplace=True)
+st.write(stat.T)
 
 
 
