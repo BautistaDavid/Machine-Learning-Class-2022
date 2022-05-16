@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 from matplotlib import rcParams
 from processing_data import data_processing_function
-import plotly.figure_factory as ff
+
 
 df = data_processing_function()
 df['Region'].replace({'EXTRANJERO':'Extranjero'},inplace=True)
