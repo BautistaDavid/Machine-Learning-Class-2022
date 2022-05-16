@@ -6,7 +6,7 @@ from matplotlib import rcParams
 # from processing_data import data_processing_function
 
 def data_processing_function():
-    df = pd.read_csv('data_icfes.csv')
+    df = pd.read_csv('icfes_streamlit/data_icfes.csv')
 # Creamos y modificamos algunas variables 
     df['region'] = df['estu_depto_reside'].replace(dic_depto())
 
