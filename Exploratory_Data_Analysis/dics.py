@@ -20,3 +20,9 @@ def dic_longitud():
     'QUINDIO':-75.68111,'CASANARE':-72.39586,'CHOCO':-76.65835,
     'CAQUETA':-75.60623,'SAN ANDRES':-81.70636}
     return dic
+
+df_viajeros = df[df['viaje'] == 1]
+# df_viajeros['area'] = df_viajeros['area'].str.upper()
+
+df_viajeros['latitud'] = df_viajeros['area'].replace(dic_latitud()) 
+df_viajeros['longitud'] = df_viajeros['area'].replace(dic_longitud()) 
